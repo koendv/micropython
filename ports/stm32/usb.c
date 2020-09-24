@@ -859,6 +859,10 @@ STATIC mp_uint_t pyb_usb_vcp_ioctl(mp_obj_t self_in, mp_uint_t request, uintptr_
         if ((flags & MP_STREAM_POLL_WR) && usbd_cdc_tx_half_empty(self->cdc_itf)) {
             ret |= MP_STREAM_POLL_WR;
         }
+    } else if (request == MP_STREAM_FLUSH) {
+        if (self->cdc_itf->tx_need_empty_packet)
+            usbd_cdc_tx_always(self->cdc_itf, NULL, 0);
+        ret = 0;
     } else {
         *errcode = MP_EINVAL;
         ret = MP_STREAM_ERROR;
