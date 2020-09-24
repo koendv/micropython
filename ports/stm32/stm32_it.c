@@ -201,6 +201,12 @@ void HardFault_C_Handler(ExceptionRegisters_t *regs) {
 __attribute__((naked))
 void HardFault_Handler(void) {
 
+    #if MICROPY_HW_BKPT_IF_RESET
+    /* soft breakpoint for hard fault */
+    if (pyb_hard_fault_debug)
+        __asm volatile ("bkpt");
+    #endif
+
     // From the ARMv7M Architecture Reference Manual, section B.1.5.6
     // on entry to the Exception, the LR register contains, amongst other
     // things, the value of CONTROL.SPSEL. This can be found in bit 3.
