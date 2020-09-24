@@ -102,6 +102,10 @@ int mp_hal_stdin_rx_chr(void) {
         }
         MICROPY_EVENT_POLL_HOOK
         ulTaskNotifyTake(pdFALSE, 1);
+        #if MODULE_BMP_ENABLED
+        void bmp_loop();
+        bmp_loop();
+        #endif
     }
 }
 

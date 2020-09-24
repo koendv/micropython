@@ -183,6 +183,20 @@ extern struct _spi_bdev_t spi_bdev2;
 #define MICROPY_HW_BLE_UART_ID       (PYB_UART_6)
 #define MICROPY_HW_BLE_UART_BAUDRATE (115200)
 
+// DAP
+
+#define MODULE_FREEDAP_ENABLED         (1)
+
+// default calibration values for this board
+// check with dap.calibrate() after compilation
+#define DAP_DEFAULT_DELAY_CONSTANT     20000
+#define DAP_DEFAULT_FAST_CLOCK         8000000
+
+// Black Magic Probe
+
+#define MODULE_BMP_ENABLED          (1)
+#include "boards/mpconfigbmp.h"
+
 /******************************************************************************/
 // Bootloader configuration
 

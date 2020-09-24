@@ -51,6 +51,7 @@ SECTIONS
         *lib/btstack/*(.text* .rodata*)
         *lib/mbedtls/*(.text* .rodata*)
         *lib/mynewt-nimble/*(.text* .rodata*)
+        *extmod/*(.text* .rodata*)
         . = ALIGN(512);
         *(.big_const*)
         . = ALIGN(4);

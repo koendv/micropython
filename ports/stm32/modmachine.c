@@ -55,6 +55,7 @@
 #include "spi.h"
 #include "uart.h"
 #include "wdt.h"
+#include "factoryreset.h"
 
 #if defined(STM32L0)
 // L0 does not have a BOR, so use POR instead
@@ -253,6 +254,16 @@ STATIC mp_obj_t machine_soft_reset(void) {
 }
 MP_DEFINE_CONST_FUN_OBJ_0(machine_soft_reset_obj, machine_soft_reset);
 
+// format flash and create new boot.py and main.py
+STATIC mp_obj_t machine_factory_reset(void) {
+#if MICROPY_HW_ENABLE_STORAGE
+    factory_reset_create_filesystem();
+    powerctrl_mcu_reset();
+#endif
+    return mp_const_none;
+}
+MP_DEFINE_CONST_FUN_OBJ_0(machine_factory_reset_obj, machine_factory_reset);
+
 // Activate the bootloader without BOOT* pins.
 STATIC NORETURN mp_obj_t machine_bootloader(size_t n_args, const mp_obj_t *args) {
     #if MICROPY_HW_ENABLE_USB
@@ -386,6 +397,7 @@ STATIC const mp_rom_map_elem_t machine_module_globals_table[] = {
     { MP_ROM_QSTR(MP_QSTR_unique_id),           MP_ROM_PTR(&machine_unique_id_obj) },
     { MP_ROM_QSTR(MP_QSTR_reset),               MP_ROM_PTR(&machine_reset_obj) },
     { MP_ROM_QSTR(MP_QSTR_soft_reset),          MP_ROM_PTR(&machine_soft_reset_obj) },
+    { MP_ROM_QSTR(MP_QSTR_factory_reset),       MP_ROM_PTR(&machine_factory_reset_obj) },
     { MP_ROM_QSTR(MP_QSTR_bootloader),          MP_ROM_PTR(&machine_bootloader_obj) },
     { MP_ROM_QSTR(MP_QSTR_freq),                MP_ROM_PTR(&machine_freq_obj) },
     #if MICROPY_HW_ENABLE_RNG

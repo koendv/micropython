@@ -311,6 +311,13 @@ struct _mp_bluetooth_btstack_root_pointers_t;
 #define MICROPY_PORT_ROOT_POINTER_BLUETOOTH_BTSTACK
 #endif
 
+#if MODULE_BMP_ENABLED
+struct _mp_bmp_root_pointers_t;
+#define MICROPY_PORT_ROOT_POINTER_BMP void **bmp_memory; struct _mp_bmp_root_pointers_t *bmp_root_pointers;
+#else
+#define MICROPY_PORT_ROOT_POINTER_BMP
+#endif
+
 #define MICROPY_PORT_ROOT_POINTERS \
     const char *readline_hist[8]; \
     \
@@ -344,7 +351,8 @@ struct _mp_bluetooth_btstack_root_pointers_t;
     \
     MICROPY_PORT_ROOT_POINTER_MBEDTLS \
     MICROPY_PORT_ROOT_POINTER_BLUETOOTH_NIMBLE \
-        MICROPY_PORT_ROOT_POINTER_BLUETOOTH_BTSTACK \
+    MICROPY_PORT_ROOT_POINTER_BLUETOOTH_BTSTACK \
+    MICROPY_PORT_ROOT_POINTER_BMP \
 
 // type definitions for the specific machine
 

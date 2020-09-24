@@ -50,6 +50,17 @@ MP_WEAK int mp_hal_stdin_rx_chr(void) {
             return dupterm_c;
         }
         MICROPY_EVENT_POLL_HOOK
+
+        #if MODULE_BMP_ENABLED
+        void bmp_loop(void);
+        bmp_loop();
+        #endif
+
+        #if MODULE_FREEDAP_ENABLED
+        void dap_loop(void);
+        dap_loop();
+        #endif
+
     }
 }
 
