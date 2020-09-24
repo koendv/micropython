@@ -279,7 +279,13 @@ void spi_set_params(const spi_t *spi_obj, uint32_t prescale, int32_t baudrate,
     }
 
     if (bits != -1) {
-        init->DataSize = (bits == 16) ? SPI_DATASIZE_16BIT : SPI_DATASIZE_8BIT;
+        if (bits == 16) {
+            init->DataSize = SPI_DATASIZE_16BIT;
+        } else if (bits == 4) {
+            init->DataSize = SPI_DATASIZE_4BIT;
+        } else {
+            init->DataSize = SPI_DATASIZE_8BIT;
+        }
     }
 
     if (firstbit != -1) {
@@ -627,6 +633,23 @@ void spi_print(const mp_print_t *print, const spi_t *spi_obj, bool legacy) {
         if (spi->Init.Mode == SPI_MODE_MASTER) {
             // compute baudrate
             uint log_prescaler = (spi->Init.BaudRatePrescaler >> 3) + 1;
+            if (spi->Init.BaudRatePrescaler == SPI_BAUDRATEPRESCALER_2) {
+                log_prescaler = 1;
+            } else if (spi->Init.BaudRatePrescaler == SPI_BAUDRATEPRESCALER_4) {
+                log_prescaler = 2;
+            } else if (spi->Init.BaudRatePrescaler == SPI_BAUDRATEPRESCALER_8) {
+                log_prescaler = 3;
+            } else if (spi->Init.BaudRatePrescaler == SPI_BAUDRATEPRESCALER_16) {
+                log_prescaler = 4;
+            } else if (spi->Init.BaudRatePrescaler == SPI_BAUDRATEPRESCALER_32) {
+                log_prescaler = 5;
+            } else if (spi->Init.BaudRatePrescaler == SPI_BAUDRATEPRESCALER_64) {
+                log_prescaler = 6;
+            } else if (spi->Init.BaudRatePrescaler == SPI_BAUDRATEPRESCALER_128) {
+                log_prescaler = 7;
+            } else if (spi->Init.BaudRatePrescaler == SPI_BAUDRATEPRESCALER_256) {
+                log_prescaler = 8;
+            };
             uint baudrate = spi_get_source_freq(spi) >> log_prescaler;
             if (legacy) {
                 mp_printf(print, ", SPI.MASTER");
@@ -638,7 +661,15 @@ void spi_print(const mp_print_t *print, const spi_t *spi_obj, bool legacy) {
         } else {
             mp_printf(print, ", SPI.SLAVE");
         }
-        mp_printf(print, ", polarity=%u, phase=%u, bits=%u", spi->Init.CLKPolarity == SPI_POLARITY_LOW ? 0 : 1, spi->Init.CLKPhase == SPI_PHASE_1EDGE ? 0 : 1, spi->Init.DataSize == SPI_DATASIZE_8BIT ? 8 : 16);
+        uint bits = 0;
+        if (spi->Init.DataSize == SPI_DATASIZE_16BIT) {
+            bits = 16;
+        } else if (spi->Init.DataSize == SPI_DATASIZE_8BIT) {
+            bits = 8;
+        } else if (spi->Init.DataSize == SPI_DATASIZE_4BIT) {
+            bits = 4;
+        }
+        mp_printf(print, ", polarity=%u, phase=%u, bits=%u", spi->Init.CLKPolarity == SPI_POLARITY_LOW ? 0 : 1, spi->Init.CLKPhase == SPI_PHASE_1EDGE ? 0 : 1, bits);
         if (spi->Init.CRCCalculation == SPI_CRCCALCULATION_ENABLE) {
             mp_printf(print, ", crc=0x%x", spi->Init.CRCPolynomial);
         }
