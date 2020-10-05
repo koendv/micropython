@@ -196,6 +196,7 @@ extern struct _spi_bdev_t spi_bdev2;
 
 #define MODULE_BMP_ENABLED          (1)
 #include "boards/mpconfigbmp.h"
+#define PLATFORM_HAS_POWER_SWITCH
 
 /******************************************************************************/
 // Bootloader configuration
