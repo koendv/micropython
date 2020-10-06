@@ -178,6 +178,7 @@ extern struct _spi_bdev_t spi_bdev2;
 #define MICROPY_HW_USB_HS           (1)
 #define MICROPY_HW_USB_HS_IN_FS     (1)
 #define MICROPY_HW_USB_MAIN_DEV     (USB_PHY_HS_ID)
+#define MICROPY_HW_USB_CDC_NUM      (2)
 
 // Bluetooth config
 #define MICROPY_HW_BLE_UART_ID       (PYB_UART_6)
