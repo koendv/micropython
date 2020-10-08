@@ -72,7 +72,7 @@ To compile micropython, clone the git repository, and type:
     make -C mpy-cross
     make -C ports/stm32 submodules
     git submodule update --init lib/btstack
-    make -C ports/stm32 BOARD=STLINK3MINI
+    make -C ports/stm32 BOARD=STLINK3MINI USER_C_MODULES=../../../extmod
 
 The micropython firmware can be found in `micropython/ports/stm32/build-STLINK3MINI/firmware.*`.
 
