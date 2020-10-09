@@ -1,5 +1,6 @@
 # MCU settings
 MCU_SERIES = f7
+MCU_ARCH = stm32
 CMSIS_MCU = STM32F733xx
 MICROPY_FLOAT_IMPL = single
 AF_FILE = boards/stm32f722_af.csv
@@ -21,3 +22,7 @@ MICROPY_VFS_LFS2 = 1
 
 # PYBD-specific frozen modules
 FROZEN_MANIFEST = boards/PYBD_SF2/manifest.py
+
+MODULE_BMP_ENABLED = 1
+BMP_ADD_MISSING = 1
+MODULE_FREEDAP_ENABLED = 1
