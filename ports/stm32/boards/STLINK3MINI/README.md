@@ -111,6 +111,8 @@ The file ``stlink3mini-schematic.pdf`` is what I *assume* the schematic of the s
 
 ## References
 
-From UM2502 User manual STLINK-V3MODS and STLINK-V3MINI, 9.c Connectors
+- [UM2502 User manual STLINK-V3MODS and STLINK-V3MINI](https://www.st.com/resource/en/user_manual/dm00555046-stlinkv3mods-and-stlinkv3mini-mini-debuggersprogrammers-for-stm32-stmicroelectronics.pdf), 9.c Connectors
 
-From [RadioOperator](https://github.com/RadioOperator/CMSIS-DAP_for_STLINK-V3MINI/)
+- [RadioOperator](https://github.com/RadioOperator/CMSIS-DAP_for_STLINK-V3MINI/) port of CMSIS-DAP to stlink v3 mini 
+
+- 3d-printable [box](https://www.st.com/resource/en/board_manufacturing_specification/stlink-v3mini_manufacturing.zip)
