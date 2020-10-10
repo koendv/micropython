@@ -9,11 +9,9 @@
 | BMP_SWO    | PA3      | X4       |
 | BMP_SRST   | PA2      | X3       |
 | BMP_TDI    | PC5      | X12      |
-| BMP_PWR_EN | PF2      | X15      |
 
-`BMP_PWR_EN` switches 3V3 power on pin X15 on and off.
 
-The default dap calibration value is for the default cpu clock of 120 MHz. If changing cpu clock frequency, recalibrate SWD clock before using DAP. Typical values:
+The default dap calibration value is for the default cpu clock of 120 MHz. When changing cpu clock frequency, recalibrate SWD clock before using DAP. Typical values:
 
 | cpu clock | dap.calibrate()  |
 | --------- | ---------------- |
