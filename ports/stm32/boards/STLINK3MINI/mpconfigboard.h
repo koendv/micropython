@@ -113,9 +113,6 @@
 #include "boards/mpconfigbmp.h"
 #define PLATFORM_HAS_POWER_SWITCH
 
-// Omit to save flash
-#define MICROPY_EMIT_INLINE_THUMB   (0)
-
 /******************************************************************************/
 // Bootloader configuration
 
