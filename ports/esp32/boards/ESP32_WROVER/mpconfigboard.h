@@ -14,7 +14,12 @@
 #define BMP_VTREF  35
 #define BMP_LED     5
 
+#define MODULE_FREEDAP_ENABLED      (1)
+// default calibration values for this board
+// after compilation, check with dap.calibrate() values are correct
+#define DAP_DEFAULT_DELAY_CONSTANT  9600
+#define DAP_DEFAULT_FAST_CLOCK      1500000
+
 #define MICROPY_HW_LED1             (BMP_LED)
 #define MICROPY_HW_LED_ON(pin)      (mp_hal_pin_low(pin))
 #define MICROPY_HW_LED_OFF(pin)     (mp_hal_pin_high(pin))
-

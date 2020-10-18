@@ -106,6 +106,10 @@ int mp_hal_stdin_rx_chr(void) {
         void bmp_loop();
         bmp_loop();
         #endif
+        #if MODULE_FREEDAP_ENABLED
+        void dap_loop();
+        dap_loop();
+        #endif
     }
 }
 
