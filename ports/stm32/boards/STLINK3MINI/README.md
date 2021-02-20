@@ -30,16 +30,16 @@ Together, pin 3 to pin 12 form a MIPI10 connector.
 | 3     |       | PD12     | USART3_RTS                         | 30    | 3     | PA0      | VTref     |
 | 4     | 4     | PF9, PH7 | TMS_SWDIO (=SPI5_MOSI + SPI5_MISO) | 29    |       | GND      |           |
 | 5     |       | PG5      |                                    | 28    | 10    | PA1, PF8 | TDI       |
-| 6     | 6     | PB5, PC7, PD2      | TDO_SWO (=UART5_RX)                | 27    |       | GND      |           |
-| 7     |       | PA9 |                                    | 26    |       | GND      |           |
+| 6     | 6     | PB5, PC7, PD2      | TDO_SWO (=UART5_RX)      | 27    |       | GND      |           |
+| 7     |       | PA9      |                                    | 26    |       | GND      |           |
 | 8     |       | GND      |                                    | 25    |       | PC1      |           |
 | 9     |       | PA11     | USB_FS_DM, CAN1_TX                 | 24    |       | GND      |           |
 | 10    |       | PA12     | USB_FS_DP, CAN1_RX                 | 23    |       | PC2      |           |
-| 11    |       | PC10     | USART3_TX                          | 22    |       | DNC      |           |
-| 12    | 14    | PG14     | USART6_TX                          | 21    |       | PE6      | SPI4_MOSI |
+| 11    |       | PC10     | USART3_TX                          | 22    |       | 5V-supply| CN5 pin #1|
+| 12    | 14    | PG9      | USART6_RX                          | 21    |       | PE6      | SPI4_MOSI |
 | 13    | 6     | PB2, PH6 | TCK_SWCLK (=SPI5_SCK)              | 20    |       | PE5      | SPI4_MISO |
 | 14    |       | PB4      |                                    | 19    |       | PE4      | SPI4_NSS  |
-| 15    | 13    | PG9      | USART6_RX                          | 18    |       | PE2      | SPI4_SCK  |
+| 15    | 13    | PG14     | USART6_TX                          | 18    |       | PE2      | SPI4_SCK  |
 | 16    |       | PB8      | I2C1_SCL                           | 17    |       | PB9      | I2C1_SDA  |
 
 ## SWD connector
